@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Day Forecast</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Next 5-Days Weather Forecast</h1>
+        <div id="forecastInfo"></div>
+    </div>
+
+    <script>
+        const API_KEY = 'ff8b92723488229eae76afde015cc54e';
+        const forecastInfo = document.getElementById('forecastInfo');
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const city = urlParams.get('city');
+
+        if (city) {
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.cod === "200") {
+                        const forecastList = data.list.filter(item => item.dt_txt.includes("12:00:00"));
+                        forecastInfo.innerHTML = forecastList.map(forecast => {
+                            const date = new Date(forecast.dt_txt).toLocaleDateString();
+                            return `
+                <div class="forecast-day">
+                  <h3>${date}</h3>
+                  <p>Temp: ${forecast.main.temp} °C</p>
+                  <p>${forecast.weather[0].description}</p>
+                  <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="Icon">
+                </div>
+              `;
+                        }).join('');
+                    } else {
+                        forecastInfo.innerHTML = '<p>Forecast not found for this city.</p>';
+                    }
+                })
+                .catch(err => {
+                    forecastInfo.innerHTML = '<p>Error fetching forecast data.</p>';
+                    console.error(err);
+                });
+        } else {
+            forecastInfo.innerHTML = '<p>No city specified in URL.</p>';
+        }
+    </script>
+</body>
+
+</html>
