@@ -1,6 +1,10 @@
 # Weather App
 A clean and responsive web application that allows users to search for a city and view both its current weather and a 5-day weather forecast.
 
+<img width="1918" height="867" alt="image" src="https://github.com/user-attachments/assets/b67548f4-35ad-4675-8d9e-3e0dbd9d56d6" />
+<img width="1902" height="865" alt="image" src="https://github.com/user-attachments/assets/56395eeb-4e9c-4a8c-bb18-f87e563c384c" />
+
+
 ## Features
 - Search for any city to view its current real-time weather conditions.
 - Displays comprehensive data including temperature (in °C), humidity, wind speed, and weather condition descriptions with visual icons.
