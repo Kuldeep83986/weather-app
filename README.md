@@ -13,6 +13,9 @@ A clean and responsive web application that allows users to search for a city an
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
 - **API**: [OpenWeatherMap API](https://openweathermap.org/api) (Current Weather Data & 5 Day / 3 Hour Forecast)
 
+## Deployed Link
+[Live Demo](https://strong-genie-568ab0.netlify.app/)
+
 ## Setup Instructions
 
 ### Prerequisites
